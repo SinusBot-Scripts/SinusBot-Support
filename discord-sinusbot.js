@@ -203,6 +203,16 @@ Scripts: <https://forum.sinusbot.com/resources/categories/scripts.2/>`)
                 ev.message.delete()
             })
 
+            command.createCommand('forum')
+            .forcePrefix('!')
+            .help('SinusBot Forum')
+            .manual('SinusBot Forum')
+            .exec((client, args, /** @type {(message: string)=>void} */ reply, ev) => {
+                reply(`SinusBot Forum: <https://forum.sinusbot.com/>`)
+                // try to delete original message to reduce spam
+                ev.message.delete()
+            })
+
         command.createCommand('installer-error')
             .alias('installererror')
             .forcePrefix('!')
