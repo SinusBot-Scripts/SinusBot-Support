@@ -143,7 +143,8 @@ bash <(wget -O - https://raw.githubusercontent.com/patschi/sinusbot-tools/master
             .help('SinusBot Documentation: install')
             .manual('SinusBot Documentation: install')
             .exec((client, args, /** @type {(message: string)=>void} */ reply, ev) => {
-                reply(`Linux: <https://sinusbot.github.io/docs/installation/linux/>
+                reply(`Install SinusBot from here:
+Linux: <https://sinusbot.github.io/docs/installation/linux/>
 Windows: <https://sinusbot.github.io/docs/installation/windows/>
 Docker: <https://sinusbot.github.io/docs/installation/docker/>`)
                 // try to delete original message to reduce spam
@@ -216,8 +217,6 @@ Scripts: <https://forum.sinusbot.com/resources/categories/scripts.2/>`)
                 ev.message.delete()
             })
 
-
-
         command.createCommand('pastebin')
             .forcePrefix('!')
             .help('Pastebin')
@@ -234,17 +233,18 @@ Scripts: <https://forum.sinusbot.com/resources/categories/scripts.2/>`)
             .help('SinusBot-Partners')
             .manual('Lists the SinusBot-Partners')
             .exec((client, args, /** @type {(message: string)=>void} */ reply, ev) => {
-                reply(`The Current SinusBot-Partners:
-TS3INDEX.COM <http://ts3index.com/hosting/?ref=sinusbot>
-Clanwarz <https://www.clanwarz.com/sinusbot-servers>
-MC-HOST24 <https://mc-host24.de/musicbot-mieten>
-4NETPLAYERS <https://gameserver.4players.de/sinusbot-server-mieten.html>`)
+                reply(`The current SinusBot-Partners:           
+4NETPLAYERS: <https://gameserver.4players.de/sinusbot-server-mieten.html>
+Clanwarz: <https://www.clanwarz.com/sinusbot-servers>
+DATHOSTING: https://www.dathosting.eu/hosting/sinusbot/
+MC-HOST24: <https://mc-host24.de/musicbot-mieten>
+TS3INDEX.COM: <http://ts3index.com/hosting/?ref=sinusbot>`)
                 // try to delete original message to reduce spam
                 ev.message.delete()
             })
 
         command.createCommand('multiple-messages')
-            .alias('multiplemessages', 'multiple', 'mmsg')
+            .alias('multiplemessages', 'multiple', 'mmsg', 'mm')
             .forcePrefix('!')
             .help('Reminder: No multiple channels')
             .manual('Reminder: Questions should only be asked once.')
@@ -261,7 +261,7 @@ MC-HOST24 <https://mc-host24.de/musicbot-mieten>
             .help('Returns an LMGTFY-link.')
             .manual('Returns an LMGTFY-link.')
             .exec((client, args, /** @type {(message: string)=>void} */ reply, ev) => {
-                let q = args.trim().replace(/\s/g, '%20');
+                let q = args.args.trim().replace(/\s/g, '%20');
 
                 let link = `https://lmgtfy.app/?q=${q}`;
 
@@ -298,6 +298,20 @@ MC-HOST24 <https://mc-host24.de/musicbot-mieten>
             .manual('Reminder: Issues with the Installer Script should be posted in it\'s forum thread.')
             .exec((client, args, /** @type {(message: string)=>void} */ reply, ev) => {
                 reply(`Issues with the Installer Script should be posted in it's forum thread: <https://forum.sinusbot.com/threads/sinusbot-installer-script.1200/page-999>`)
+                // try to delete original message to reduce spam
+                ev.message.delete()
+            })
+
+            command.createCommand('oldversion')
+            .alias('old', 'version')
+            .forcePrefix('!')
+            .help('Reminder: New version availlable')
+            .manual('Reminder: Please install the newest version.')
+            .exec((client, args, /** @type {(message: string)=>void} */ reply, ev) => {
+                reply(`Your verion looks quite old, huh? Please install the newest version of SinusBot from here:
+Linux: <https://sinusbot.github.io/docs/installation/linux/>
+Windows: <https://sinusbot.github.io/docs/installation/windows/>
+Docker: <https://sinusbot.github.io/docs/installation/docker/>`)
                 // try to delete original message to reduce spam
                 ev.message.delete()
             })
