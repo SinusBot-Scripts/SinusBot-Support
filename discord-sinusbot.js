@@ -308,7 +308,7 @@ TS3INDEX.COM: <http://ts3index.com/hosting/?ref=sinusbot>`)
             .help('Reminder: New version availlable')
             .manual('Reminder: Please install the newest version.')
             .exec((client, args, /** @type {(message: string)=>void} */ reply, ev) => {
-                reply(`Your verion looks quite old, huh? Please install the newest version of SinusBot from here:
+                reply(`Your version looks quite old, huh? Please install the newest version of SinusBot from here:
 Linux: <https://sinusbot.github.io/docs/installation/linux/>
 Windows: <https://sinusbot.github.io/docs/installation/windows/>
 Docker: <https://sinusbot.github.io/docs/installation/docker/>`)
