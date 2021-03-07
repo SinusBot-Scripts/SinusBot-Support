@@ -111,7 +111,7 @@ bash <(wget -O - https://raw.githubusercontent.com/patschi/sinusbot-tools/master
 2) SinusBot version (<https://sinusbot.github.io/docs/faq/general/#what-is-my-version>)
 3) TeamSpeak Client version
 4) Instance log / SinusBot log (set \`LogLevel = 10\` in your \`config.ini\` before)
-**Share the logs via <https://pastebin.com> to reduce spam.**
+**Please share the logs via <https://pastebin.com> to reduce spam.**
 
 *This automated message was triggered by ${client.getURL()}*`)
                 // try to delete original message to reduce spam
@@ -130,7 +130,10 @@ apt-get install bc binutils coreutils lsb-release util-linux net-tools curl
 cd /opt/sinusbot/
 # execute with root privileges, sudo may be required:
 bash <(wget -O - https://raw.githubusercontent.com/patschi/sinusbot-tools/master/tools/diagSinusbot.sh)
-\`\`\``)
+\`\`\`
+**Please share the logs via <https://pastebin.com> to reduce spam.**
+
+*This automated message was triggered by ${client.getURL()}*`)
                 // try to delete original message to reduce spam
                 ev.message.delete()
             })
@@ -203,12 +206,87 @@ Scripts: <https://forum.sinusbot.com/resources/categories/scripts.2/>`)
                 ev.message.delete()
             })
 
-            command.createCommand('forum')
+        command.createCommand('forum')
             .forcePrefix('!')
             .help('SinusBot Forum')
             .manual('SinusBot Forum')
             .exec((client, args, /** @type {(message: string)=>void} */ reply, ev) => {
                 reply(`SinusBot Forum: <https://forum.sinusbot.com/>`)
+                // try to delete original message to reduce spam
+                ev.message.delete()
+            })
+
+
+
+        command.createCommand('pastebin')
+            .forcePrefix('!')
+            .help('Pastebin')
+            .manual('Pastebin')
+            .exec((client, args, /** @type {(message: string)=>void} */ reply, ev) => {
+                reply(`Please share any code via <https://pastebin.com> to reduce spam.`)
+                // try to delete original message to reduce spam
+                ev.message.delete()
+            })
+
+        command.createCommand('partners')
+            .alias('partner', 'hoster', 'hosters')
+            .forcePrefix('!')
+            .help('SinusBot-Partners')
+            .manual('Lists the SinusBot-Partners')
+            .exec((client, args, /** @type {(message: string)=>void} */ reply, ev) => {
+                reply(`The Current SinusBot-Partners:
+TS3INDEX.COM <http://ts3index.com/hosting/?ref=sinusbot>
+Clanwarz <https://www.clanwarz.com/sinusbot-servers>
+MC-HOST24 <https://mc-host24.de/musicbot-mieten>
+4NETPLAYERS <https://gameserver.4players.de/sinusbot-server-mieten.html>`)
+                // try to delete original message to reduce spam
+                ev.message.delete()
+            })
+
+        command.createCommand('multiple-messages')
+            .alias('multiplemessages', 'multiple', 'mmsg')
+            .forcePrefix('!')
+            .help('Reminder: No multiple channels')
+            .manual('Reminder: Questions should only be asked once.')
+            .exec((client, args, /** @type {(message: string)=>void} */ reply, ev) => {
+                reply(`Please don't ask for help in multiple channels, we won't help you faster.`)
+                // try to delete original message to reduce spam
+                ev.message.delete()
+            })
+
+        command.createCommand('lmgtfy')
+            .alias('google', 'gidf')
+            .forcePrefix('!')
+            .addArgument(args => args.rest.setName("args"))
+            .help('Returns an LMGTFY-link.')
+            .manual('Returns an LMGTFY-link.')
+            .exec((client, args, /** @type {(message: string)=>void} */ reply, ev) => {
+                let q = args.trim().replace(/\s/g, '%20');
+
+                let link = `https://lmgtfy.app/?q=${q}`;
+
+                reply(`Maybe that could help you: <${link}>`)
+                // try to delete original message to reduce spam
+                ev.message.delete()
+            })
+
+        command.createCommand('reboot')
+            .alias('restart', 'neustart')
+            .forcePrefix('!')
+            .help('Reminder: Reboot')
+            .manual('Reminder: Reboot')
+            .exec((client, args, /** @type {(message: string)=>void} */ reply, ev) => {
+                reply(`Quick reminder: Have you already tried to turn your device off and on again?`)
+                // try to delete original message to reduce spam
+                ev.message.delete()
+            })
+
+        command.createCommand('installer')
+            .forcePrefix('!')
+            .help('SinusBot Installer')
+            .manual('SinusBot Installer')
+            .exec((client, args, /** @type {(message: string)=>void} */ reply, ev) => {
+                reply(`SinusBot Installer: <https://sinusbot.github.io/installer/>`)
                 // try to delete original message to reduce spam
                 ev.message.delete()
             })
