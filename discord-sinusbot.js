@@ -1,6 +1,6 @@
 /**
  * Forum:  
- * GitHub: https://github.com/irgendwr/sinusbot-scripts
+ * GitHub: https://github.com/AFink/sinusbot-support
  */
 
 registerPlugin({
