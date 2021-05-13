@@ -49,7 +49,6 @@ registerPlugin({
                 reply(pre + `
 > :penguin: **Linux**
 1) Output of the diagnostic script: <https://forum.sinusbot.com/threads/diagscript.831/>
-2) Instance log / SinusBot log (set \`LogLevel = 10\` in your \`config.ini\` before)
 Share these via <https://pastebin.com> to reduce spam.
 
 > :snail: **Windows**
@@ -200,9 +199,9 @@ Scripts: <https://forum.sinusbot.com/resources/categories/scripts.2/>`)
             .alias('noscriptsupport', 'scriptsupport')
             .forcePrefix('!')
             .help('Reminder: no 3rd party support')
-            .manual('Reminder: We don\'t offer support for 3rd-party scripts.')
+            .manual('Reminder: We don\'t offer support for 3rd-party scripts / installers / images.')
             .exec((client, args, /** @type {(message: string)=>void} */ reply, ev) => {
-                reply(`We don't offer support for 3rd-party scripts. Ask for help in the discussions thread of the script (in the forum) instead.`)
+                reply(`We don't offer support for 3rd-party scripts / installers / images. Ask for help in the discussions thread of the script (in the forum) instead.`)
                 // try to delete original message to reduce spam
                 ev.message.delete()
             })
