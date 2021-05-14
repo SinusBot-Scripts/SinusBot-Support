@@ -5,9 +5,9 @@
 
 registerPlugin({
     name: 'Discord SinusBot',
-    version: '1.0.0',
+    version: '2.0.0',
     description: 'Useful commands for the official SinusBot Discord server.',
-    author: 'Jonas Bögle (irgendwr)',
+    author: 'Andreas Fink (RealPanter), Lala Sabathil (Aiko~Chan), Jonas Bögle (irgendwr)',
     engine: '>= 1.0.0',
     backends: ['discord'],
     requiredModules: ['http', 'discord-dangerous'],
@@ -447,7 +447,52 @@ Added ${len} role${len == 1 ? '' : 's'} from account ${id}:\n${roles.join('\n')}
                     })
                 });
             })
+        
+        command.createCommand('purge')
+            .forcePrefix('!')
+            .addArgument(command.createArgument('int').setName('count'))
+            .exec((client, args, /** @type {(message: string)=>void} */ reply, ev) => {
+                if(isMod(client)) {
+                    if(!args.count) {
+                        reply(`Missing parameter *count*`)
+                        ev.message.delete()
+                        return
+                    } else {
+                        deleteMessages(ev.message, count)
+                    }
+                } else {
+                    // This command does not exist
+                   return;
+                }
+                ev.message.delete()
+            })
     })
+    
+    function deleteMessages(msg, count) {
+        const mid = msg.ID()
+        const channel = msg.channel()        
+        let messages = channel.getMessages({ before: mid, limit: count}, (err, msgarr) => {
+            if(err) {
+                engine.log(err)
+                return false
+            }
+            try {
+                msgarr.forEach(message => message.delete())
+            } catch (error) {
+                engine.log(error)
+                return false
+            }
+            return true
+        });
+    }
+    
+    function isMod(client) {
+        if(client.getServerGroups().includes('531495313291083802')) {
+            return true
+        } else {
+            return false
+        }
+    }
 
     /**
      * Gets a user object.
