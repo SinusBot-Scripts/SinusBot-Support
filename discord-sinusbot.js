@@ -473,12 +473,13 @@ Added ${len} role${len == 1 ? '' : 's'} from account ${id}:\n${roles.join('\n')}
         const channel = msg.channel()        
         let messages = channel.getMessages({ before: mid, limit: count}, (err, msgarr) => {
             if(err) {
+                engine.log(err)
                 return false
             }
             try {
                 msgarr.forEach(message => message.delete())
-            } catch (err) {
-                engine.log(err)
+            } catch (error) {
+                engine.log(error)
                 return false
             }
             return true
