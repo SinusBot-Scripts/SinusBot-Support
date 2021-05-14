@@ -5,9 +5,9 @@
 
 registerPlugin({
     name: 'Discord SinusBot',
-    version: '1.0.0',
+    version: '2.0.0',
     description: 'Useful commands for the official SinusBot Discord server.',
-    author: 'Jonas Bögle (irgendwr)',
+    author: 'Andreas Fink (RealPanter), Lala Sabathil (Aiko~Chan), Jonas Bögle (irgendwr)',
     engine: '>= 1.0.0',
     backends: ['discord'],
     requiredModules: ['http', 'discord-dangerous'],
