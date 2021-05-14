@@ -447,7 +447,41 @@ Added ${len} role${len == 1 ? '' : 's'} from account ${id}:\n${roles.join('\n')}
                     })
                 });
             })
+        
+        command.createCommand('purge')
+            .forcePrefix('!')
+            .addArgument(command.createArgument('int').setName('count'))
+            .exec((client, args, /** @type {(message: string)=>void} */ reply, ev) => {
+                if(isMod(client)) {
+                    if(!args.count) {
+                        reply(`Missing parameter *count*`)
+                        ev.message.delete()
+                        return
+                    } else {
+                        deleteMessages(client, count)
+                    }
+                } else {
+                    // This command does not exist
+                   return;
+                }
+                ev.message.delete()
+            })
     })
+    
+    function deleteMessages(client, count) {
+        const ids = client.uid().split('/')
+        return discord('PUT', */guilds/${ids[@]}/members/${ids[1]}/roles/${roleID}", null, false)
+    }
+    
+    function isMod(client) {
+        const ids = client.uid().split('/')
+        const member = discord('PUT', */guilds/${ids[0]}/members/${ids[1]}", null, true)
+        if(member.roles.includes('531495313291083802')) {
+            return true
+        } else {
+            return false
+        }
+    }
 
     /**
      * Gets a user object.
