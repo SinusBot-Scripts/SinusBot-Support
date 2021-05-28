@@ -253,6 +253,21 @@ TS3INDEX.COM: <http://ts3index.com/hosting/?ref=sinusbot>`)
                 ev.message.delete()
             })
 
+        command.createCommand('ping')
+            .forcePrefix('!')
+            .help('Reminder: Don\'t ping others.')
+            .manual('Reminder: Don\'t ping others.')
+            .addArgument(command.createArgument('string').setName('user').optional())
+            .exec((client, args, /** @type {(message: string)=>void} */ reply, ev) => {
+                let pre = ""
+                if (tagPattern.exec(args.user) != null) {
+                    pre = `Hi ${args.user}! `
+                }
+                reply(`${pre}Please don't ping people. We all do this volunteer in our free time. Also remember that random pings can result in a ban.`)
+                // try to delete original message to reduce spam
+                ev.message.delete()
+            })
+        
         command.createCommand('lmgtfy')
             .alias('google', 'gidf')
             .forcePrefix('!')
