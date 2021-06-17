@@ -161,6 +161,16 @@ Docker: <https://sinusbot.github.io/docs/installation/docker/>`)
                 ev.message.delete()
             })
 
+        command.createCommand('faq')
+            .forcePrefix('!')
+            .help('SinusBot FAQ')
+            .manual('SinusBot FAQ')
+            .exec((client, args, /** @type {(message: string)=>void} */ reply, ev) => {
+                reply(`SinusBot Documentation: <https://sinusbot.github.io/docs/faq/general/>`)
+                // try to delete original message to reduce spam
+                ev.message.delete()
+            })
+
         command.createCommand('docs')
             .forcePrefix('!')
             .help('SinusBot Documentation')
