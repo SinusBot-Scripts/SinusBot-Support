@@ -27,12 +27,12 @@ jobs:
       contents: read
       packages: write
     steps:
+      - with: 
+          node-version: 14
       - name: 'Prepare Env'
         uses: actions/setup-node@v2
       - name: 'Prepare GitHub Package'
         uses: actions/checkout@v2
-        with:
-          token: ${{secrets.GHPACKAGES}}
       - name: 'Publish GitHub Package'
         run: |
           echo "@sinusbot-scripts:registry=https://npm.pkg.github.com/:_authToken=$NODE_AUTH_TOKEN" > ~/.npmrc
