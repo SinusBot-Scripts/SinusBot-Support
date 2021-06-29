@@ -27,7 +27,6 @@ jobs:
       contents: read
       packages: write
     steps:
-      - continue-on-error: true
       - uses: actions/checkout@v2
       - uses: actions/setup-node@v2
         with:
@@ -40,6 +39,7 @@ jobs:
           NODE_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
       - run: npm ci
       - run: npm publish --registry=https://npm.pkg.github.com/:_authToken=$NODE_AUTH_TOKEN 
+        continue-on-error: true
         env:
           NODE_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
 
