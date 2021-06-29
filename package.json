@@ -1,5 +1,5 @@
 {
-  "name": "@AFink/sinusbot-support",
+  "name": "@sinusbot-scripts/sinusbot-support",
   "version": "1.0.2",
   "description": "Script originally wrote by [irgendwr](https://github.com/irgendwr/sinusbot-scripts).",
   "main": "discord-sinusbot.js",
@@ -8,7 +8,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/AFink/sinusbot-support.git"
+    "url": "git+https://github.com/sinusbot-scripts/sinusbot-support.git"
   },
   "contributors": [
     {
@@ -23,9 +23,9 @@
   ],
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/AFink/sinusbot-support/issues"
+    "url": "https://github.com/sinusbot-scripts/sinusbot-support/issues"
   },
-  "homepage": "https://github.com/AFink/sinusbot-support#readme",
+  "homepage": "https://github.com/sinusbot-scripts/sinusbot-support#readme",
   "devDependencies": {
     "sinusbot-scripting-engine": "^1.0.18"
   }

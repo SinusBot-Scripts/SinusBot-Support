@@ -33,14 +33,14 @@ jobs:
           node-version: 14
           registry-url: https://npm.pkg.github.com/
           scope: afink
-          token: ${{secrets.GITHUB_TOKEN}}
-      - run: echo "@afink:registry=https://npm.pkg.github.com/:_authToken=$NODE_AUTH_TOKEN" > ~/.npmrc
+          token: ${{secrets.GHPACKAGES}}
+      - run: echo "@sinusbot-scripts:registry=https://npm.pkg.github.com/:_authToken=$NODE_AUTH_TOKEN" > ~/.npmrc
         env:
-          NODE_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
+          NODE_AUTH_TOKEN: ${{secrets.GHPACKAGES}}
       - run: npm ci
       - run: npm publish --registry=https://npm.pkg.github.com/:_authToken=$NODE_AUTH_TOKEN 
         env:
-          NODE_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
+          NODE_AUTH_TOKEN: ${{secrets.GHPACKAGES}}
 
   publish-npm:
     needs: publish-gpr
@@ -52,6 +52,6 @@ jobs:
           node-version: 14
           registry-url: https://registry.npmjs.org/
       - run: npm ci
-      - run: npm publish
+      - run: npm publish --scope=@sinusbot-scripts
         env:
-          NODE_AUTH_TOKEN: ${{secrets.npm_token}}
+          NODE_AUTH_TOKEN: ${{secrets.NPMPACKAGES}}
