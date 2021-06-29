@@ -1,6 +1,6 @@
 {
   "name": "@AFink/sinusbot-support",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Script originally wrote by [irgendwr](https://github.com/irgendwr/sinusbot-scripts).",
   "main": "discord-sinusbot.js",
   "scripts": {
