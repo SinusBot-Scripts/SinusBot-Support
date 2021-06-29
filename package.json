@@ -1,10 +1,10 @@
 {
   "name": "sinusbot-support",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Script originally wrote by [irgendwr](https://github.com/irgendwr/sinusbot-scripts).",
   "main": "discord-sinusbot.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "node dummy-test.js"
   },
   "repository": {
     "type": "git",
