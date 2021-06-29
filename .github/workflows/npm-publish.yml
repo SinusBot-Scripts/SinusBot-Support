@@ -35,7 +35,7 @@ jobs:
           scope: '@afink'
       - run: echo "@AFink:registry=https://npm.pkg.github.com/AFink" > ~/.npmrc
       - run: npm ci
-      - run: npm publish --registry=https://npm.pkg.github.com/AFink --scope=@AFink
+      - run: npm publish --registry=https://npm.pkg.github.com
         env:
           NODE_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
 
