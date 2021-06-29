@@ -10,7 +10,17 @@
     "type": "git",
     "url": "git+https://github.com/AFink/sinusbot-support.git"
   },
-  "author": "Andreas Fink <andreas@andreasfink.xyz>",
+  "contributors": [
+    {
+      "name" : "Andreas Fink",
+      "email" : "andreas@andreasfink.xyz",
+      "url" : "https://github.com/AFink"
+    }, {
+      "name" : "Lala Sabathil",
+      "email" : "aiko@aitsys.dev",
+      "url" : "https://github.com/Lulalaby"
+    }
+  ],
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/AFink/sinusbot-support/issues"
