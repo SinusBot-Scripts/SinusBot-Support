@@ -1,5 +1,5 @@
 /**
- * Forum:  
+ * Forum: https://forum.sinusbot.com
  * GitHub: https://github.com/AFink/sinusbot-support
  */
 
@@ -7,7 +7,7 @@ registerPlugin({
     name: 'Discord SinusBot',
     version: '2.0.0',
     description: 'Useful commands for the official SinusBot Discord server.',
-    author: 'Andreas Fink (RealPanter), Lala Sabathil (Aiko~Chan), Jonas Bögle (irgendwr)',
+    author: 'Andreas Fink (RealPanter), Lala Sabathil (Lulalaby), Jonas Bögle (irgendwr)',
     engine: '>= 1.0.0',
     backends: ['discord'],
     requiredModules: ['http', 'discord-dangerous'],
@@ -23,6 +23,13 @@ registerPlugin({
     const backend = require('backend')
     const http = require('http')
 
+    if (!String.prototype.startsWith) {
+        String.prototype.startsWith = function(searchString, position) {
+          position = position || 0;
+          return this.indexOf(searchString, position) === position;
+        };
+      }      
+    
     engine.log(`Loaded ${meta.name} v${meta.version} by ${meta.author}.`)
 
     const urlPattern = /^https:\/\/forum\.sinusbot\.com\/members\/(?:.*\.)?(\d+)\/(?:#.*)?$/;
@@ -345,7 +352,7 @@ Docker: <https://sinusbot.github.io/docs/installation/docker/>`)
             .forcePrefix('!')
             .addArgument(command.createArgument('string').setName('url'))
             .help('Gives you the groups from the SinusBot Forum')
-            .manual('Gives you the groups from the SinusBot Forum.\nThis only works if you set your full discord username (for example: `irgendwr#7476`) in your forum settings: <https://forum.sinusbot.com/account/account-details>.')
+            .manual('Gives you the groups from the SinusBot Forum.\nThis only works if you set your full discord username (for example: `flyth#2478`) in your forum settings: <https://forum.sinusbot.com/account/account-details>.')
             .exec(( /** @type {Client} */ client, /** @type {object} */ args, /** @type {(message: string)=>void} */ reply) => {
                 if (!args.url) {
                     getUser(client).then(user => {
@@ -359,7 +366,7 @@ Docker: <https://sinusbot.github.io/docs/installation/docker/>`)
 
                 let matches = urlPattern.exec(args.url)
                 if (!matches || matches.length < 2) {
-                    reply('That\'s not a valid url.\nExample of a valid url: `https://forum.sinusbot.com/members/irgendwr.1213/`')
+                    reply('That\'s not a valid url.\nExample of a valid url: `https://forum.sinusbot.com/members/flyth.2/`')
                     return;
                 }
 
@@ -403,6 +410,9 @@ Docker: <https://sinusbot.github.io/docs/installation/docker/>`)
 
                     getUser(client).then(user => {
                         const tag = user.username + '#' + user.discriminator
+
+                        const did = user.id.toString()
+
                         if (!res.discordID) {
                             reply('No Discord ID found.\nPlease set your full discord username `' + tag + '` in your forum settings: <https://forum.sinusbot.com/account/account-details>')
                             return;
@@ -459,6 +469,15 @@ Docker: <https://sinusbot.github.io/docs/installation/docker/>`)
                         if (res.groups.includes('Insider')) {
                             roles.push('Insider')
                             addRole(client, '452456498300452877')
+                        }
+                        if (config.api_forum.startsWith("https://forum.sinusbot.com")) {
+                            const sinusbotModsJSON = '{"856780995629154305": "https://forum.sinusbot.com/members/lala-sabathil.656/", "100230152528617472": "https://forum.sinusbot.com/members/jniklas2.2885/", "290893007044083714": "https://forum.sinusbot.com/members/rotherpanter.61354/"}'
+                            const sinusbotMods = JSON.parse(sinusbotModsJSON)
+                            if(sinusbotMods[did] != undefined && sinusbotMods[did] != null) {
+                                roles.push(':fire: Moderator')
+                                addRole(client, '531495313291083802')
+                                reply("Your account " + sinusbotMods[did] + " was identified as Moderator")
+                            }
                         }
 
                         const len = roles.length
