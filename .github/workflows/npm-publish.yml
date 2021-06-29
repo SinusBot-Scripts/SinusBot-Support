@@ -27,9 +27,10 @@ jobs:
       contents: read
       packages: write
     steps:
+      - name: 'Prepare Env'
+        uses: actions/setup-node@v2
       - name: 'Prepare GitHub Package'
         uses: actions/checkout@v2
-          actions/setup-node@v2
         with:
           node-version: 14
           registry-url: https://npm.pkg.github.com/
@@ -44,18 +45,18 @@ jobs:
         env:
           NODE_AUTH_TOKEN: ${{secrets.GHPACKAGES}}
 
-  publish-npm-packages:
-    needs: build
-    runs-on: ubuntu-latest
-    steps:
-      - name: 'Publish to NPM'
-      - uses: actions/checkout@v2
-      - uses: actions/setup-node@v2
-        with:
-          node-version: 14
-          registry-url: https://registry.npmjs.org/
-      - run: npm ci
-      - run: npm publish
-        continue-on-error: true
-        env:
-          NODE_AUTH_TOKEN: ${{secrets.NPMPACKAGES}}
+#  publish-npm-packages:
+#    needs: build
+#    runs-on: ubuntu-latest
+#    steps:
+#      - name: 'Publish to NPM'
+#      - uses: actions/checkout@v2
+#      - uses: actions/setup-node@v2
+#        with:
+#          node-version: 14
+#          registry-url: https://registry.npmjs.org/
+#      - run: npm ci
+#      - run: npm publish
+#        continue-on-error: true
+#        env:
+#          NODE_AUTH_TOKEN: ${{secrets.NPMPACKAGES}}
