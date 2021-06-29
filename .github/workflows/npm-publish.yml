@@ -27,19 +27,21 @@ jobs:
       contents: read
       packages: write
     steps:
+      - continue-on-error: true
       - uses: actions/checkout@v2
-      - with: 
+      - uses: actions/setup-node@v2
+        with:
           node-version: 14
-      - name: 'Prepare Env'
-        uses: actions/setup-node@v2
-      - name: 'Publish GitHub Package'
-        run: |
-          echo "@sinusbot-scripts:registry=https://npm.pkg.github.com/:_authToken=$NODE_AUTH_TOKEN" > ~/.npmrc
-          npm ci
-          npm publish --registry=https://npm.pkg.github.com
-        continue-on-error: true
+          registry-url: https://npm.pkg.github.com/
+          scope: sinusbot-scripts
+          token: ${{secrets.GITHUB_TOKEN}}
+      - run: echo "@sinusbot-scripts:registry=https://npm.pkg.github.com/:_authToken=$NODE_AUTH_TOKEN" > ~/.npmrc
         env:
-          NODE_AUTH_TOKEN: ${{secrets.GHPACKAGES}}
+          NODE_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
+      - run: npm ci
+      - run: npm publish --registry=https://npm.pkg.github.com/:_authToken=$NODE_AUTH_TOKEN 
+        env:
+          NODE_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
 
 #  publish-npm-packages:
 #    needs: build
