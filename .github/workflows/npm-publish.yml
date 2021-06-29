@@ -20,7 +20,7 @@ jobs:
       - run: npm ci
       - run: npm test
       
-  publish-gh-packages:
+  publish-gh-package:
     needs: build
     runs-on: ubuntu-latest
     permissions:
@@ -37,24 +37,25 @@ jobs:
       - run: echo "@sinusbot-scripts:registry=https://npm.pkg.github.com/:_authToken=$NODE_AUTH_TOKEN" > ~/.npmrc
         env:
           NODE_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
+      - run: npm version minor
       - run: npm ci
       - run: npm publish --registry=https://npm.pkg.github.com/:_authToken=$NODE_AUTH_TOKEN 
         continue-on-error: true
         env:
           NODE_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
 
-#  publish-npm-packages:
-#    needs: build
-#    runs-on: ubuntu-latest
-#    steps:
-#      - name: 'Publish to NPM'
-#      - uses: actions/checkout@v2
-#      - uses: actions/setup-node@v2
-#        with:
-#          node-version: 14
-#          registry-url: https://registry.npmjs.org/
-#      - run: npm ci
-#      - run: npm publish
-#        continue-on-error: true
-#        env:
-#          NODE_AUTH_TOKEN: ${{secrets.NPMPACKAGES}}
+  publish-npm-package:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - name: 'Publish to NPM'
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v2
+        with:
+          node-version: 14
+          registry-url: https://registry.npmjs.org/
+      - run: npm ci
+      - run: npm publish
+        continue-on-error: true
+        env:
+          NODE_AUTH_TOKEN: ${{secrets.NPMPACKAGES}}
