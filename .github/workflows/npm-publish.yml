@@ -37,6 +37,8 @@ jobs:
       - run: echo "@sinusbot-scripts:registry=https://npm.pkg.github.com/:_authToken=$NODE_AUTH_TOKEN" > ~/.npmrc
         env:
           NODE_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
+      - run: git config --global user.email "aiko@aitsys.dev"
+      - run: git config --global user.name "Lala Sabathil"
       - run: npm version minor
       - run: npm ci
       - run: npm publish --registry=https://npm.pkg.github.com/:_authToken=$NODE_AUTH_TOKEN 
