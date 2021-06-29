@@ -19,19 +19,9 @@ jobs:
           node-version: 14
       - run: npm ci
       - run: npm test
-
-  bump-global-version:
-    needs: build
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v2
-      - run: git config --global user.email "aiko@aitsys.dev"
-      - run: git config --global user.name "Lala Sabathil"
-      - run: npm version minor
-      - run: git add package.json && git push
       
   publish-gh-package:
-    needs: bump-global-version
+    needs: build
     runs-on: ubuntu-latest
     permissions:
       contents: read
@@ -54,7 +44,7 @@ jobs:
           NODE_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
 
   publish-npm-package:
-    needs: bump-global-version
+    needs: build
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
@@ -64,9 +54,5 @@ jobs:
           registry-url: https://registry.npmjs.org/
       - run: npm ci
       - run: npm publish
-      - run: git config --global user.email "aiko@aitsys.dev"
-      - run: git config --global user.name "Lala Sabathil"
-      - run: npm version minor
-        continue-on-error: true
         env:
           NODE_AUTH_TOKEN: ${{secrets.NPMPACKAGES}}
