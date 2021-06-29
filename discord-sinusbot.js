@@ -430,6 +430,10 @@ Docker: <https://sinusbot.github.io/docs/installation/docker/>`)
                         engine.log('roles: ' + res.groups.join(', '))
 
                         let roles = [];
+                        if (res.groups.includes('Team-Mitglied')) {
+                            roles.push(':hammer: Staff')
+                            //addRole(client, '152974705953865728')
+                        }
                         if (res.groups.includes('Developer')) {
                             roles.push(':floppy_disk: Developer')
                             //addRole(client, '454967235157426178')
@@ -474,7 +478,7 @@ Docker: <https://sinusbot.github.io/docs/installation/docker/>`)
                             const sinusbotModsJSON = '{"856780995629154305": "https://forum.sinusbot.com/members/lala-sabathil.656/", "100230152528617472": "https://forum.sinusbot.com/members/jniklas2.2885/", "290893007044083714": "https://forum.sinusbot.com/members/rotherpanter.61354/"}'
                             const sinusbotMods = JSON.parse(sinusbotModsJSON)
                             if(sinusbotMods[did] != undefined && sinusbotMods[did] != null) {
-                                roles.push(':fire: Moderator')
+                                roles.push(':hammer: Moderator')
                                 addRole(client, '531495313291083802')
                                 reply("Your account " + sinusbotMods[did] + " was identified as Moderator")
                             }
