@@ -39,7 +39,7 @@ jobs:
       - run: npm --userconfig=.npmrc publish --registry=https://npm.pkg.github.com
       - run: printenv
       - run: cat /home/runner/work/_temp/.npmrc
-      - env:
+        env:
           NODE_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
 
   publish-npm:
