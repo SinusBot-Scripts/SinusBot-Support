@@ -1,4 +1,4 @@
-[![Package CI/CD](https://github.com/SinusBot-Scripts/SinusBot-Support/actions/workflows/npm-publish.yml/badge.svg?label=SinusBot Support)](https://github.com/SinusBot-Scripts/SinusBot-Support/actions/workflows/npm-publish.yml)
+[![Package CI/CD](https://github.com/SinusBot-Scripts/SinusBot-Support/actions/workflows/npm-publish.yml/badge.svg)](https://github.com/SinusBot-Scripts/SinusBot-Support/actions/workflows/npm-publish.yml)
 [![CodeQL](https://github.com/SinusBot-Scripts/SinusBot-Support/actions/workflows/codeql-analysis.yml/badge.svg)](https://github.com/SinusBot-Scripts/SinusBot-Support/actions/workflows/codeql-analysis.yml)
 ![Version](https://img.shields.io/github/package-json/v/sinusbot-scripts/discord-voice-state)
 
