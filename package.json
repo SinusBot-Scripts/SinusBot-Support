@@ -1,6 +1,6 @@
 {
   "name": "@sinusbot-scripts/sinusbot-support",
-  "version": "2.2.2",
+  "version": "2.2.3",
   "description": "This script powers the SinusBot Support Discord Server.",
   "main": "discord-sinusbot.js",
   "scripts": {

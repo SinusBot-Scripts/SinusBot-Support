@@ -1,11 +1,11 @@
 /**
  * Forum: https://forum.sinusbot.com
- * GitHub: https://github.com/AFink/sinusbot-support
+ * GitHub: https://github.com/SinusBot-Scripts/SinusBot-Support
  */
 
 registerPlugin({
     name: 'Discord SinusBot',
-    version: '2.2.1',
+    version: '2.2.3',
     description: 'Useful commands for the official SinusBot Discord server.',
     author: 'Andreas Fink (RealPanter), Lala Sabathil (Lulalaby), Jonas Bögle (irgendwr)',
     engine: '>= 1.0.0',
@@ -15,7 +15,7 @@ registerPlugin({
         name: 'api_forum',
         title: 'Forum API URL',
         type: 'string',
-        placeholder: 'https://forum.example.com/foobar?id=%ID%'
+        placeholder: 'https://forum.example.com/api?id=%ID%'
     }, ]
 }, (_, config, meta) => {
     const event = require('event')
