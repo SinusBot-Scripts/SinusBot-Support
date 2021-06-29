@@ -1,7 +1,7 @@
 {
   "name": "@sinusbot-scripts/sinusbot-support",
   "version": "2.2.1",
-  "description": "Script originally wrote by [irgendwr](https://github.com/irgendwr/sinusbot-scripts).",
+  "description": "This script powers the SinusBot Support Discord Server."
   "main": "discord-sinusbot.js",
   "scripts": {
     "test": "node dummy-test.js"
