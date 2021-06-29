@@ -26,16 +26,17 @@ jobs:
     permissions:
       contents: read
       packages: write
-    continue-on-error: true
     steps:
+      - name: 'Publish to GitHub Pages'
       - uses: actions/checkout@v2
       - uses: actions/setup-node@v2
         with:
           node-version: 14
           registry-url: https://npm.pkg.github.com/
-          scope: afink
+          scope: sinusbot-scripts
           token: ${{secrets.GHPACKAGES}}
       - run: echo "@sinusbot-scripts:registry=https://npm.pkg.github.com/:_authToken=$NODE_AUTH_TOKEN" > ~/.npmrc
+        continue-on-error: true
         env:
           NODE_AUTH_TOKEN: ${{secrets.GHPACKAGES}}
       - run: npm ci
@@ -46,8 +47,8 @@ jobs:
   publish-npm-packages:
     needs: build
     runs-on: ubuntu-latest
-    continue-on-error: true
     steps:
+      - name: 'Publish to NPM'
       - uses: actions/checkout@v2
       - uses: actions/setup-node@v2
         with:
@@ -55,5 +56,6 @@ jobs:
           registry-url: https://registry.npmjs.org/
       - run: npm ci
       - run: npm publish
+        continue-on-error: true
         env:
           NODE_AUTH_TOKEN: ${{secrets.NPMPACKAGES}}
