@@ -20,7 +20,7 @@ jobs:
       - run: npm ci
       - run: npm test
       
-  publish-gpr:
+  publish-gh-packages:
     needs: build
     runs-on: ubuntu-latest
     permissions:
@@ -42,8 +42,8 @@ jobs:
         env:
           NODE_AUTH_TOKEN: ${{secrets.GHPACKAGES}}
 
-  publish-npm:
-    needs: publish-gpr
+  publish-npm-packages:
+    needs: build
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
@@ -52,6 +52,6 @@ jobs:
           node-version: 14
           registry-url: https://registry.npmjs.org/
       - run: npm ci
-      - run: npm publish --scope=@sinusbot-scripts
+      - run: npm publish
         env:
           NODE_AUTH_TOKEN: ${{secrets.NPMPACKAGES}}
