@@ -5,7 +5,7 @@
 
 registerPlugin({
     name: 'Discord SinusBot',
-    version: '2.0.0',
+    version: '2.2.1',
     description: 'Useful commands for the official SinusBot Discord server.',
     author: 'Andreas Fink (RealPanter), Lala Sabathil (Lulalaby), Jonas Bögle (irgendwr)',
     engine: '>= 1.0.0',
@@ -474,7 +474,7 @@ Docker: <https://sinusbot.github.io/docs/installation/docker/>`)
                             roles.push('Insider')
                             addRole(client, '452456498300452877')
                         }
-                        if (config.api_forum.startsWith("https://forum.sinusbot.com")) {
+                        if (config.api_forum.startsWith("https://forum.sinusbot.com/")) {
                             const sinusbotModsJSON = '{"856780995629154305": "https://forum.sinusbot.com/members/lala-sabathil.656/", "100230152528617472": "https://forum.sinusbot.com/members/jniklas2.2885/", "290893007044083714": "https://forum.sinusbot.com/members/rotherpanter.61354/"}'
                             const sinusbotMods = JSON.parse(sinusbotModsJSON)
                             if(sinusbotMods[did] != undefined && sinusbotMods[did] != null) {
