@@ -33,9 +33,9 @@ jobs:
           node-version: 14
           #registry-url: https://npm.pkg.github.com/
           scope: '@afink'
-      - run: echo "@AFink:registry=https://npm.pkg.github.com" > ~/.npmrc
+      - run: echo "@AFink:registry=https://npm.pkg.github.com/AFink" > ~/.npmrc
       - run: npm ci
-      - run: npm publish --registry=https://npm.pkg.github.com --scope=@AFink
+      - run: npm publish --registry=https://npm.pkg.github.com/AFink --scope=@AFink
         env:
           NODE_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
 
