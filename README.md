@@ -1,8 +1,9 @@
 [![Package CI/CD](https://github.com/SinusBot-Scripts/SinusBot-Support/actions/workflows/npm-publish.yml/badge.svg)](https://github.com/SinusBot-Scripts/SinusBot-Support/actions/workflows/npm-publish.yml)
 [![CodeQL](https://github.com/SinusBot-Scripts/SinusBot-Support/actions/workflows/codeql-analysis.yml/badge.svg)](https://github.com/SinusBot-Scripts/SinusBot-Support/actions/workflows/codeql-analysis.yml)
 ![Version](https://img.shields.io/github/package-json/v/sinusbot-scripts/discord-voice-state)
+![npm (scoped)](https://img.shields.io/npm/v/@sinusbot-scripts/sinusbot-support)
 
-![npm (scoped)](https://img.shields.io/npm/v/@sinusbot-scripts/sinusbot-support)# SinusBot Support Discord - Tools
+# SinusBot Support Discord - Tools
 
 This script powers the SinusBot Support Discord Server.
 
