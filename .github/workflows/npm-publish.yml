@@ -34,12 +34,12 @@ jobs:
           #registry-url: https://npm.pkg.github.com/
           scope: afink
           repo-token: ${{secrets.GITHUB_TOKEN}}
-      - run: echo "@AFink:registry=https://npm.pkg.github.com/:_authToken=$NODE_AUTH_TOKEN" > .npmrc
+      - run: echo "@AFink:registry=https://npm.pkg.github.com/:_authToken=$NODE_AUTH_TOKEN" > ~/.npmrc
         env:
           NODE_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
       - run: npm ci
-      - run: cat /home/runner/work/.npmrc
-      - run: npm --userconfig=.npmrc publish --@afink:registry=https://npm.pkg.github.com
+      - run: cat ~/.npmrc
+      - run: npm --userconfig=~/.npmrc publish --@afink:registry=https://npm.pkg.github.com
         env:
           NODE_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
 
