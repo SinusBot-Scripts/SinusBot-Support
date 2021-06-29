@@ -19,6 +19,17 @@ jobs:
           node-version: 14
       - run: npm ci
       - run: npm test
+  setup-node:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/setup-node@v1
+        with:
+          node-version: "13.x"
+      - run: echo "//npm.pkg.github.com/:_authToken=$NODE_AUTH_TOKEN" > ~/.npmrc
+      - run: npm ci
+        env:
+          NODE_AUTH_TOKEN: ${{ github.token }}
 
   publish-gpr:
     needs: build
