@@ -28,7 +28,7 @@ jobs:
       - run: git config --global user.email "aiko@aitsys.dev"
       - run: git config --global user.name "Lala Sabathil"
       - run: npm version minor
-      - run: git add package.json && git commit -m "[ci skip] Bump Version" && git push
+      - run: git add package.json && git push
       
   publish-gh-package:
     needs: bump-global-version
