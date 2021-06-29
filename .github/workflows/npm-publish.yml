@@ -32,9 +32,6 @@ jobs:
       - name: 'Prepare GitHub Package'
         uses: actions/checkout@v2
         with:
-          node-version: 14
-          registry-url: https://npm.pkg.github.com/
-          scope: sinusbot-scripts
           token: ${{secrets.GHPACKAGES}}
       - name: 'Publish GitHub Package'
         run: |
