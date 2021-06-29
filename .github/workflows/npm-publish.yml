@@ -26,6 +26,7 @@ jobs:
     permissions:
       contents: read
       packages: write
+    continue-on-error: true
     steps:
       - uses: actions/checkout@v2
       - uses: actions/setup-node@v2
@@ -45,6 +46,7 @@ jobs:
   publish-npm-packages:
     needs: build
     runs-on: ubuntu-latest
+    continue-on-error: true
     steps:
       - uses: actions/checkout@v2
       - uses: actions/setup-node@v2
