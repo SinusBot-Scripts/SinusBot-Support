@@ -411,7 +411,7 @@ Docker: <https://sinusbot.github.io/docs/installation/docker/>`)
                     getUser(client).then(user => {
                         const tag = user.username + '#' + user.discriminator
 
-                        const did = user.id.toString()
+                        const did = user.ID().toString()
 
                         if (!res.discordID) {
                             reply('No Discord ID found.\nPlease set your full discord username `' + tag + '` in your forum settings: <https://forum.sinusbot.com/account/account-details>')
