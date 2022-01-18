@@ -490,7 +490,7 @@ Docker: <https://sinusbot.github.io/docs/installation/docker/>`)
 Added ${len} role${len == 1 ? '' : 's'} from account ${id}:\n${roles.join('\n')}`)
                             engine.log(`${client.nick()} (${client.uid()}) synced roles from ${id}: ${roles.join()}`)
                         } else {
-                            reply('You don\'t have any groups in the forum that can be snyced :confused:')
+                            reply('You don\'t have any groups in the forum that can be synced :confused:')
                         }
                     })
                 });
